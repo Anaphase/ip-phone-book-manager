@@ -1,0 +1,143 @@
+div.container
+  
+  section
+    @show(PhoneBooks.Cisco.tracker.active())
+    
+    div.alert.alert-info
+      'Loading...'
+  
+  section.clearfix#cisco-menu
+    h2 'Cisco Menu'
+    
+    div.well
+      form.form-horizontal
+        @submit('saveMetadata("cisco", new_cisco_title, new_cisco_prompt)')
+        @init(new_cisco_title = cisco_menu.Title; new_cisco_prompt = cisco_menu.Prompt)
+        
+        div.form-group
+          label.col-sm-1.control-label[for='title'] 'Title'
+          div.col-sm-11
+            input#title.form-control[placeholder='Directory Menu'] @model(new_cisco_title)
+        div.form-group
+          label.col-sm-1.control-label[for='prompt'] 'Prompt'
+          div.col-sm-11
+            input#prompt.form-control[placeholder='Please select a directory'] @model(new_cisco_prompt)
+        div.form-group
+          div.col-sm-offset-1.col-sm-11
+            button.btn.btn-success[type='submit'] 'Save'
+    
+    div.table-responsive
+      table.menu.table.table-striped
+        thead
+          tr
+            th 'Directory'
+            th 'Actions'
+        tbody
+          tr
+            @repeat(menu_item in cisco_menu.MenuItem)
+            @init(new_title = menu_item.Name)
+            
+            td
+              span
+                @bind(menu_item.Name)
+                @hide(is_editing)
+              form
+                @show(is_editing)
+                @submit('saveDirectoryTitle("cisco", menu_item.Name, new_title); is_editing = false')
+                input[placeholder='Name'] @model(new_title)
+            
+            td
+              button.btn.btn-success
+                @click('saveDirectoryTitle("cisco", menu_item.Name, new_title); $parent.is_editing = false')
+                @if(is_editing)
+                'Save'
+              
+              //# button.btn.btn-default
+              //#   @click($parent.is_editing = false)
+              //#   @if(is_editing)
+              //#   'Cancel'
+              
+              button.btn.btn-primary
+                @click('go("cisco/directory/"+(menu_item.Name | slugify))')
+                @if(!is_editing)
+                'View / Edit'
+              
+              button.btn.btn-warning
+                @click($parent.is_editing = true)
+                @if(!is_editing)
+                'Rename'
+              
+              button.btn.btn-danger
+                @click('deleteDirectory("cisco", menu_item)')
+                @if(!is_editing)
+                'Delete'
+    
+    button.btn.btn-primary.pull-right
+      @click('addDirectory("cisco")')
+      'Add Directory'
+  
+  section.clearfix#yealink-menu
+    h2 'Yealink Menu'
+    
+    div.well
+      form.form-horizontal
+        @submit('saveMetadata("yealink", new_yealink_title)')
+        @init(new_yealink_title = yealink_menu.Title)
+        
+        div.form-group
+          label.col-sm-1.control-label[for='title'] 'Title'
+          div.col-sm-11
+            input#title.form-control[placeholder='Directory Menu'] @model(new_yealink_title)
+        div.form-group
+          div.col-sm-offset-1.col-sm-11
+            button.btn.btn-success[type='submit'] 'Save'
+    
+    div.table-responsive
+      table.menu.table.table-striped
+        thead
+          tr
+            th 'Directory'
+            th 'Actions'
+        tbody
+          tr
+            @repeat(menu_item in yealink_menu.MenuItem)
+            @init(new_title = menu_item.Prompt)
+            
+            td
+              span
+                @bind(menu_item.Prompt)
+                @hide(is_editing)
+              form
+                @show(is_editing)
+                @submit('saveDirectoryTitle("yealink", menu_item.Prompt, new_title); is_editing = false')
+                input[placeholder='Prompt'] @model(new_title)
+            
+            td
+              button.btn.btn-success
+                @click('saveDirectoryTitle("yealink", menu_item.Prompt, new_title); $parent.is_editing = false')
+                @if(is_editing)
+                'Save'
+              
+              //# button.btn.btn-default
+              //#   @click($parent.is_editing = false)
+              //#   @if(is_editing)
+              //#   'Cancel'
+              
+              button.btn.btn-primary
+                @click('go("/yealink/directory/"+(menu_item.Prompt | slugify))')
+                @if(!is_editing)
+                'View / Edit'
+              
+              button.btn.btn-warning
+                @click($parent.is_editing = true)
+                @if(!is_editing)
+                'Rename'
+              
+              button.btn.btn-danger
+                @click('deleteDirectory("yealink", menu_item)')
+                @if(!is_editing)
+                'Delete'
+    
+    button.btn.btn-primary.pull-right
+      @click('addDirectory("yealink")')
+      'Add Directory'

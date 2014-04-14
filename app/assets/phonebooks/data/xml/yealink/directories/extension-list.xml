@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<YealinkIPPhoneDirectory>
+  <Title>Extension List</Title>
+  <MenuItem>
+    <Prompt>Dennis</Prompt>
+    <URI>7001</URI>
+  </MenuItem>
+  <MenuItem>
+    <Prompt>Office</Prompt>
+    <URI>7003</URI>
+  </MenuItem>
+  <MenuItem>
+    <Prompt>BW Phone</Prompt>
+    <URI>7004</URI>
+  </MenuItem>
+</YealinkIPPhoneDirectory>

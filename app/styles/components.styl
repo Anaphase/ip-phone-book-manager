@@ -1,0 +1,55 @@
+@import 'nib'
+
+.navbar-fixed-top
+  z-index 998
+
+.growl
+  
+  width 250px
+  z-index 1000
+  fixed top 10px right 10px
+  
+  @media (max-width: 767px)
+    width 100%
+    fixed top 0 left 0 right 0
+    
+    .alert
+      margin-bottom 0
+      border-radius 0
+      padding 25px 10px
+  
+  .growl-item
+    @media (max-width: 767px)
+      relative top 0px left 0
+    
+    &.ng-enter
+      animation slide-down 250ms linear 0s 1
+    
+    &.ng-leave
+      animation fade-out 250ms linear 0s 1
+
+.overlay
+  width 100%
+  height 100%
+  z-index 999
+  absolute top 0 left 0
+  background-color rgba(255, 255, 255, .75)
+  
+  .spinner
+    margin-left -25px
+    absolute top 50% left 50%
+
+.spinner // loading indicator
+  width 50px
+  height 50px
+  margin 12px auto
+  border-radius 25px
+  border solid 5px transparent
+  border-color #444 #444 #444 transparent
+  animation spin 750ms linear 0s infinite
+  
+  &.no-margin
+    margin 0 auto
+
+.nav, .pagination, .carousel, .panel-title a
+  cursor pointer

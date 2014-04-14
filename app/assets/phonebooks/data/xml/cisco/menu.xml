@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CiscoIPPhoneMenu>
+	<Title>Directory Menu</Title>
+	<Prompt>Please select a directory</Prompt>
+	<MenuItem>
+		<Name>Ray's Directory</Name>
+		<URL>http://example.com/phonebook/directories/rays-directory.xml</URL>
+	</MenuItem>
+	<MenuItem>
+		<Name>Gary's Directory</Name>
+		<URL>http://example.com/phonebook/directories/garys-directory.xml</URL>
+	</MenuItem>
+	<MenuItem>
+		<Name>Ana's Directory</Name>
+		<URL>http://example.com/phonebook/directories/anas-directory.xml</URL>
+	</MenuItem>
+</CiscoIPPhoneMenu>

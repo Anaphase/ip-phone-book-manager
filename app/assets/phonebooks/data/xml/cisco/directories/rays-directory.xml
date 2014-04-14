@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CiscoIPPhoneDirectory>
+  <Title>Ray's Directory</Title>
+	<Prompt>Please select a contact</Prompt>
+  <DirectoryEntry>
+    <Name>Holsapple Engraving</Name>
+    <Telephone>2143578449</Telephone>
+    <Fax>2147201938</Fax>
+    <Address>1234 Cool Street Dr.
+2810 E. Trinity Mills Road
+Carrollton, Texas 75006</Address>
+    <Email>coolemail@coolsite.com</Email>
+  </DirectoryEntry>
+  <DirectoryEntry>
+    <Name>Ana Winton Cell</Name>
+    <Telephone>2147109293</Telephone>
+    <Fax>2147201938</Fax>
+    <Address>1234 Cool Street Dr.
+2810 E. Trinity Mills Road
+Carrollton, Texas 75006</Address>
+    <Email>coolemail@coolsite.com</Email>
+  </DirectoryEntry>
+  <DirectoryEntry>
+    <Name>Ace Imports</Name>
+    <Telephone>9722411771</Telephone>
+    <Fax>2147201938</Fax>
+    <Address>1234 Cool Street Dr.
+2810 E. Trinity Mills Road
+Carrollton, Texas 75006</Address>
+    <Email>coolemail@coolsite.com</Email>
+  </DirectoryEntry>
+  <DirectoryEntry>
+    <Name>McRoberts and Company</Name>
+    <Telephone>2143639900</Telephone>
+    <Fax>2147201938</Fax>
+    <Address>1234 Cool Street Dr.
+2810 E. Trinity Mills Road
+Carrollton, Texas 75006</Address>
+    <Email>coolemail@coolsite.com</Email>
+  </DirectoryEntry>
+  <DirectoryEntry>
+    <Name>Weather Report</Name>
+    <Telephone>*61</Telephone>
+    <Fax>2147201938</Fax>
+    <Address>1234 Cool Street Dr.
+2810 E. Trinity Mills Road
+Carrollton, Texas 75006</Address>
+    <Email>coolemail@coolsite.com</Email>
+  </DirectoryEntry>
+  <SoftKeyItem>
+    <Name>Dial</Name>
+    <URL>SoftKey:Dial</URL>
+    <Position>1</Position>
+  </SoftKeyItem>
+  <SoftKeyItem>
+    <Name>Menu</Name>
+    <URL>http://example.com/phonebook/menu.xml</URL>
+    <Position>2</Position>
+  </SoftKeyItem>
+  <SoftKeyItem>
+    <Name>Exit</Name>
+    <URL>SoftKey:Exit</URL>
+    <Position>3</Position>
+  </SoftKeyItem>
+</CiscoIPPhoneDirectory>

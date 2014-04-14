@@ -1,0 +1,261 @@
+div.container
+  
+  section
+    
+    h2
+      span @bind(directory.Title)
+      small
+        span ' ('
+        span @bind(type)
+        span ')'
+    
+    ng-switch[on='type']
+      
+      div
+        @switchWhen('cisco')
+        
+        h3 'Information'
+        div.well
+          form.form-horizontal
+            @submit(saveMetadata(new_title, new_prompt))
+            @init(new_title = directory.Title; new_prompt = directory.Prompt)
+            
+            div.form-group
+              label.col-sm-1.control-label[for='title'] 'Title'
+              div.col-sm-11
+                input#title.form-control[placeholder='My Directory'] @model(new_title)
+            div.form-group
+              label.col-sm-1.control-label[for='prompt'] 'Prompt'
+              div.col-sm-11
+                input#prompt.form-control[placeholder='Please select a contact'] @model(new_prompt)
+            div.form-group
+              div.col-sm-offset-1.col-sm-11
+                button.btn.btn-success[type='submit'] 'Save'
+        
+        h3 'Directory Entries'
+        div.clearfix
+          div.table-responsive
+            table.directory.table.table-striped
+              thead
+                tr
+                  th 'Name'
+                  th 'Phone'
+                  th 'Fax'
+                  th 'Address'
+                  th 'Email'
+                  th 'Actions'
+              
+              tbody
+                tr
+                  @repeat(entry in directory.DirectoryEntry)
+                  
+                  td
+                    span
+                      @bind(entry.Name)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='Name'] @model(entry.Name)
+                  
+                  td
+                    span
+                      @bind(entry.Telephone)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='Phone'][type='tel'] @model(entry.Telephone)
+                  
+                  td
+                    span
+                      @bind(entry.Fax)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='Fax'][type='tel'] @model(entry.Fax)
+                  
+                  td
+                    span
+                      @bindHTML(entry.Address | newlineToBreakTag)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      textarea.address[placeholder='Address'] @model(entry.Address)
+                  
+                  td
+                    span
+                      @bind(entry.Email)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='Email'][type='email'] @model(entry.Email)
+                  
+                  td
+                    button.btn.btn-success
+                      @click(saveDirectoryEntry(entry); $parent.is_editing = false)
+                      @if(is_editing)
+                      'Save'
+                    
+                    //# button.btn.btn-default
+                    //#   @click($parent.is_editing = false)
+                    //#   @if(is_editing)
+                    //#   'Cancel'
+                    
+                    button.btn.btn-warning
+                      @click($parent.is_editing = true)
+                      @if(!is_editing)
+                      'Edit'
+                    
+                    button.btn.btn-danger
+                      @click(deleteDirectoryEntry(entry))
+                      @if(!is_editing)
+                      'Delete'
+          
+          button.btn.btn-primary.pull-right
+            @click(addDirectoryEntry())
+            'Add Directory Entry'
+        
+        h3 'Soft Key Items'
+        div.clearfix
+          div.table-responsive
+            table.directory.table.table-striped
+              thead
+                tr
+                  th 'Name'
+                  th 'URL'
+                  th 'Position'
+                  th 'Actions'
+              
+              tbody
+                tr
+                  @repeat(item in directory.SoftKeyItem)
+                  
+                  td
+                    span
+                      @bind(item.Name)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveSoftKeyItem(item); is_editing = false)
+                      input[placeholder='Name'] @model(item.Name)
+                  
+                  td
+                    span
+                      @bind(item.URL)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveSoftKeyItem(item); is_editing = false)
+                      input[placeholder='URL'] @model(item.URL)
+                  
+                  td
+                    span
+                      @bind(item.Position)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveSoftKeyItem(item); is_editing = false)
+                      input[placeholder='Position'] @model(item.Position)
+                  
+                  td
+                    button.btn.btn-success
+                      @click(saveSoftKeyItem(item); $parent.is_editing = false)
+                      @if(is_editing)
+                      'Save'
+                    
+                    //# button.btn.btn-default
+                    //#   @click($parent.is_editing = false)
+                    //#   @if(is_editing)
+                    //#   'Cancel'
+                    
+                    button.btn.btn-warning
+                      @click($parent.is_editing = true)
+                      @if(!is_editing)
+                      'Edit'
+                    
+                    button.btn.btn-danger
+                      @click(deleteSoftKeyItem(item))
+                      @if(!is_editing)
+                      'Delete'
+          
+          button.btn.btn-primary.pull-right
+            @click(addSoftKeyItem())
+            'Add Soft Key Item'
+      
+      div
+        @switchWhen('yealink')
+        
+        h3 'Information'
+        div.well
+          form.form-horizontal
+            @submit(saveMetadata(new_title))
+            @init(new_title = directory.Title)
+            
+            div.form-group
+              label.col-sm-1.control-label[for='title'] 'Title'
+              div.col-sm-11
+                input#title.form-control[placeholder='My Directory'] @model(new_title)
+            div.form-group
+              div.col-sm-offset-1.col-sm-11
+                button.btn.btn-success[type='submit'] 'Save'
+        
+        h3 'Menu Items'
+        div.clearfix
+          div.table-responsive
+            table.table.table-striped
+              thead
+                tr
+                  th 'Prompt'
+                  th 'URI'
+                  th 'Actions'
+              
+              tbody
+                tr
+                  @repeat(entry in directory.MenuItem)
+                  
+                  td
+                    span
+                      @bind(entry.Prompt)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='Prompt'] @model(entry.Prompt)
+                  
+                  td
+                    span
+                      @bind(entry.URI)
+                      @hide(is_editing)
+                    form
+                      @show(is_editing)
+                      @submit(saveDirectoryEntry(entry); is_editing = false)
+                      input[placeholder='URI'] @model(entry.URI)
+                  
+                  td
+                    button.btn.btn-success
+                      @click(saveDirectoryEntry(entry); $parent.is_editing = false)
+                      @if(is_editing)
+                      'Save'
+                    
+                    //# button.btn.btn-default
+                    //#   @click($parent.is_editing = false)
+                    //#   @if(is_editing)
+                    //#   'Cancel'
+                    
+                    button.btn.btn-warning
+                      @click($parent.is_editing = true)
+                      @if(!is_editing)
+                      'Edit'
+                    
+                    button.btn.btn-danger
+                      @click(deleteDirectoryEntry(entry))
+                      @if(!is_editing)
+                      'Delete'
+          
+          button.btn.btn-primary.pull-right
+            @click(addDirectoryEntry())
+            'Add Menu Item'

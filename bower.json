@@ -1,0 +1,35 @@
+{
+  "name": "ip-phone-book-manager",
+  "version": "1.0.0",
+  "main": "public/js/app.js",
+  "dependencies": {
+    
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-animate": "latest",
+    "angular-sanitize": "latest",
+    "angular-resource": "latest",
+    
+    "angular-growl": "latest",
+    "angular-bootstrap" : "latest",
+    "angular-promise-tracker": "latest",
+    
+    "json3": "latest",
+    "strapless": "latest",
+    "fastclick": "latest"
+  },
+  "overrides": {
+    "angular-growl": {
+      "ignore": "build/angular-growl.min.css"
+    },
+    "angular-promise-tracker": {
+      "main": ["promise-tracker.js", "promise-tracker-http-interceptor.js"]
+    },
+    "json3": {
+      "main": "lib/json3.js"
+    },
+    "strapless": {
+      "main": "less/bootstrap.less"
+    }
+  }
+}

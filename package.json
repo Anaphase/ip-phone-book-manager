@@ -1,0 +1,29 @@
+{
+  "author": "Colin Wood",
+  "name": "ip-phone-book-manager",
+  "title": "IP Phone Book Manager",
+  "description": "This application manages a set of XML files used by IP telephones (Cisco, Yealink, etc.). It can create, modify, and remove phone book XML files.",
+  "version": "1.0.0",
+  "dependencies": {
+    
+    "bower": "latest",
+    "brunch": "latest",
+    "auto-reload-brunch": "latest",
+    
+    "css-brunch": "latest",
+    "less-brunch": "latest",
+    "stylus-brunch": "latest",
+    "clean-css-brunch": "latest",
+    
+    "uglify-js-brunch": "latest",
+    "javascript-brunch": "latest",
+    "coffee-script-brunch": "latest",
+    
+    "siml-angular-brunch": "latest",
+    
+    "karma": "latest",
+    "karma-ng-scenario": "latest",
+    "karma-coffee-preprocessor": "latest"
+    
+  }
+}

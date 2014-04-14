@@ -1,0 +1,28 @@
+div.navbar.navbar-inverse.navbar-fixed-top
+  @controller(Navbar)
+  
+  div.container
+    div.navbar-header
+      button.navbar-toggle
+        @click(is_collapsed = !is_collapsed)
+        span.icon-bar:3
+      a.navbar-brand[href='#/']
+        span.visible-xs
+          span.glyphicon.glyphicon-phone-alt
+          span ' PhoneBooks'
+        span.hidden-xs @bind(App.name)
+    
+    nav.navbar-collapse[collapse=is_collapsed]
+      ul.nav.navbar-nav[activate-tab]
+        li
+          a[href='#/'] 'Menus'
+        li
+          a[href='#/settings'] 'Settings'
+      
+      ul.nav.navbar-nav.navbar-right
+        li
+          a[href='phonebooks/zip.php'][title='Download XML Files']
+            @click(is_collapsed = true)
+            
+            span.glyphicon.glyphicon-download-alt
+            span ' Download XML Files'

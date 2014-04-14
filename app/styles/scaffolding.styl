@@ -1,0 +1,29 @@
+@import 'nib'
+
+body
+  padding-top 50px
+
+section
+  padding-top 25px
+  
+  &>section:first-child
+    padding-top 0
+
+table
+  
+  button+button
+    margin-left 8px
+    
+  &.directory
+    button+button
+      @media (min-width: 992px)
+        margin-left 8px
+      @media (max-width: 768px)
+        margin-left 8px
+      @media (min-width: 768px) and (max-width: 992px)
+        margin-left 0
+        margin-top 8px
+  
+  textarea.address
+    width 200px
+    height 80px

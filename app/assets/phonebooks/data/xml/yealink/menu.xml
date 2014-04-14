@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<YealinkIPPhoneTextMenu>
+  <Title>Directory List</Title>
+  <MenuItem>
+    <Prompt>Extension List</Prompt>
+    <URI>http://example.com/phonebook/directories/extension-list.xml</URI>
+  </MenuItem>
+  <MenuItem>
+    <Prompt>Gary Winton's Directory</Prompt>
+    <URI>http://example.com/phonebook/directories/gary-wintons-directory.xml</URI>
+  </MenuItem>
+  <MenuItem>
+    <Prompt>Vendors</Prompt>
+    <URI>http://example.com/phonebook/directories/vendors.xml</URI>
+  </MenuItem>
+  <MenuItem>
+    <Prompt>Customers</Prompt>
+    <URI>http://example.com/phonebook/directories/customers.xml</URI>
+  </MenuItem>
+</YealinkIPPhoneTextMenu>
