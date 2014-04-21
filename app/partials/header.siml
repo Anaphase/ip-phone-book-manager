@@ -15,14 +15,15 @@ div.navbar.navbar-inverse.navbar-fixed-top
     nav.navbar-collapse[collapse=is_collapsed]
       ul.nav.navbar-nav[activate-tab]
         li
-          a[href='#/'] 'Menus'
+          a[href='#/'] 'Menu'
         li
           a[href='#/settings'] 'Settings'
       
       ul.nav.navbar-nav.navbar-right
         li
-          a[href='phonebooks/zip.php'][title='Download XML Files']
+          a[title='Download XML Files']
             @click(is_collapsed = true)
+            @href('phonebooks/zip.php?menu_type={{PhoneBooks.Settings.menu_type}}')
             
             span.glyphicon.glyphicon-download-alt
             span ' Download XML Files'

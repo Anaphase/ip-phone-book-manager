@@ -6,11 +6,9 @@ angular.module('PhoneBook.controllers')
   '$filter'
   '$rootScope'
   'resolved_menus'
-  'resolved_settings'
   
-  ($scope, $filter, $rootScope, resolved_menus, resolved_settings) ->
+  ($scope, $filter, $rootScope, resolved_menus) ->
     
-    $scope.settings = resolved_settings
     $scope.cisco_menu = resolved_menus.cisco
     $scope.yealink_menu = resolved_menus.yealink
     
@@ -32,7 +30,7 @@ angular.module('PhoneBook.controllers')
               Position: '1'
             , 
               Name: 'Menu'
-              URL: "#{$scope.settings.menu_address}/menu.xml"
+              URL: "#{$rootScope.PhoneBooks.Settings.menu_address}/menu.xml"
               Position: '2'
             , 
               Name: 'Exit'

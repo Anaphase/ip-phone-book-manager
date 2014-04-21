@@ -10,7 +10,7 @@ angular.module('PhoneBook.controllers')
   
   ($scope, $filter, $rootScope, $routeParams, resolved_directory) ->
     
-    $scope.type = 'cisco'
+    $scope.directory_type = 'cisco'
     $scope.directory_id = $routeParams.directory_id
     
     $scope.directory = resolved_directory
@@ -80,7 +80,7 @@ angular.module('PhoneBook.controllers')
         $rootScope.PhoneBooks.Cisco.saveDirectoryTitle($scope.directory_id, new_title)
           .success (directory) ->
             $scope.directory = directory
-            $rootScope.go "/#{$scope.type}/directory/#{$filter('slugify')(directory.Title)}"
+            $rootScope.go "/#{$scope.directory_type}/directory/#{$filter('slugify')(directory.Title)}"
       
       $scope.savePrompt = (new_prompt) ->
         $rootScope.PhoneBooks.Cisco.saveDirectoryPrompt($scope.directory_id, new_prompt)

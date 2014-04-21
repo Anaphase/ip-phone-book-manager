@@ -15,19 +15,19 @@ angular.module('PhoneBook.services')
       
       getSettings: ->
         $http.get.apply @, [
-          "/phonebooks/settings"
+          '/phonebooks/settings'
           tracker: @settings_tracker
         ]
-        .error (d) => growl.addErrorMessage "Could not load settings: #{d.status_txt}"
+        .error (d) -> growl.addErrorMessage "Could not load settings: #{d.status_txt}"
       
       saveSettings: (settings) ->
         $http.post.apply @, [
-          "/phonebooks/settings"
+          '/phonebooks/settings'
           settings
           tracker: @settings_tracker
         ]
-        .success => growl.addSuccessMessage "Saved settings"
-        .error (d) => growl.addErrorMessage "Could not save settings: #{d.status_txt}"
+        .success -> growl.addSuccessMessage "Saved settings"
+        .error (d) -> growl.addErrorMessage "Could not save settings: #{d.status_txt}"
     
     new Settings()
     

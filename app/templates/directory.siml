@@ -6,10 +6,10 @@ div.container
       span @bind(directory.Title)
       small
         span ' ('
-        span @bind(type)
+        span @bind(directory_type)
         span ')'
     
-    ng-switch[on='type']
+    ng-switch[on='directory_type']
       
       div
         @switchWhen('cisco')
@@ -65,7 +65,7 @@ div.container
                     form
                       @show(is_editing)
                       @submit(saveDirectoryEntry(entry); is_editing = false)
-                      input[placeholder='Phone'][type='tel'] @model(entry.Telephone)
+                      input:tel[placeholder='Phone'] @model(entry.Telephone)
                   
                   td
                     span
@@ -74,7 +74,7 @@ div.container
                     form
                       @show(is_editing)
                       @submit(saveDirectoryEntry(entry); is_editing = false)
-                      input[placeholder='Fax'][type='tel'] @model(entry.Fax)
+                      input:tel[placeholder='Fax'] @model(entry.Fax)
                   
                   td
                     span
@@ -92,7 +92,7 @@ div.container
                     form
                       @show(is_editing)
                       @submit(saveDirectoryEntry(entry); is_editing = false)
-                      input[placeholder='Email'][type='email'] @model(entry.Email)
+                      input:email[placeholder='Email'] @model(entry.Email)
                   
                   td
                     button.btn.btn-success

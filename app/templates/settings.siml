@@ -5,20 +5,33 @@ div.container
     h2 'Settings'
     
     form
-      @submit(saveSettings(settings))
+      @submit(saveSettings(new_settings))
+      
+      div.form-group
+        label 'Menu Type'
+        div.radio
+          label
+            input:radio[value='cisco']
+              @model(new_settings.menu_type)
+            'Cisco'
+        div.radio
+          label
+            input:radio[value='yealink']
+              @model(new_settings.menu_type)
+            'Yealink'
       
       div.form-group
         label[for='menu-address']
           'Menu Address'
         div.input-group
-          input#menu-address.form-control[type='url'][placeholder='{{menu_address_placeholder}}'][required]
-            @model(settings.menu_address)
+          input:url#menu-address.form-control[placeholder='{{menu_address_placeholder}}'][required]
+            @model(new_settings.menu_address)
           span.input-group-addon
             '/menu.xml'
         p.help-block
           span.text-muted
             span 'Directories must be provided at '
-            span @bind(settings.menu_address)
+            span @bind(new_settings.menu_address)
             span '/direcotries/'
       
       button.btn.btn-success.pull-right[type='submit'] 'Save'

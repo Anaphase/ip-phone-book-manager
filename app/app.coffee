@@ -43,6 +43,23 @@ angular.module('PhoneBook', [
     
     $httpProvider.interceptors.push 'ApiInterceptor'
     
+    resolved_settings = [
+      
+      '$q'
+      'Settings'
+      '$rootScope'
+      
+      ($q, Settings, $rootScope) ->
+        deferred = $q.defer()
+        Settings.getSettings()
+          .success (settings) ->
+            $rootScope.PhoneBooks.Settings = settings
+            deferred.resolve(settings)
+          .error -> deferred.reject()
+        deferred.promise
+      
+    ]
+    
     $routeProvider
       
       .when '/',
@@ -71,20 +88,7 @@ angular.module('PhoneBook', [
                 yealink: yealink_deferred.promise
             
           ]
-          resolved_settings: [
-            
-            '$q'
-            'Settings'
-            '$rootScope'
-            
-            ($q, Settings, $rootScope) ->
-              deferred = $q.defer()
-              Settings.getSettings()
-                .success (settings) -> deferred.resolve(settings)
-                .error -> deferred.reject()
-              deferred.promise
-            
-          ]
+          resolved_settings: resolved_settings
       
       .when '/cisco/directory/:directory_id',
         controller: 'CiscoDirectory'
@@ -128,20 +132,7 @@ angular.module('PhoneBook', [
         controller: 'Settings'
         templateUrl: 'templates/settings'
         resolve:
-          resolved_settings: [
-            
-            '$q'
-            'Settings'
-            '$rootScope'
-            
-            ($q, Settings, $rootScope) ->
-              deferred = $q.defer()
-              Settings.getSettings()
-                .success (settings) -> deferred.resolve(settings)
-                .error -> deferred.reject()
-              deferred.promise
-            
-          ]
+          resolved_settings: resolved_settings
       
       .otherwise
         redirectTo: '/'
@@ -151,17 +142,21 @@ angular.module('PhoneBook', [
 .run([
   
   'App'
+  'Settings'
   'PhoneBook'
   '$location'
   '$rootScope'
   
-  (App, PhoneBook, $location, $rootScope) ->
+  (App, Settings, PhoneBook, $location, $rootScope) ->
     
     document.title = App.name
     
     $rootScope.App = App
     
     $rootScope.go = (route) -> $location.path route
+    
+    Settings.getSettings().success (settings) ->
+      $rootScope.PhoneBooks.Settings = settings
     
     $rootScope.PhoneBooks =
       Cisco: new PhoneBook('cisco')

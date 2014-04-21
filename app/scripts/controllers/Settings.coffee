@@ -6,18 +6,20 @@ angular.module('PhoneBook.controllers')
   '$scope'
   'Settings'
   '$rootScope'
-  'resolved_settings'
   
-  ($q, $scope, Settings, $rootScope, resolved_settings) ->
+  ($q, $scope, Settings, $rootScope) ->
     
-    $scope.settings = resolved_settings
+    $scope.new_settings = angular.copy $rootScope.PhoneBooks.Settings
+    
     $scope.menu_address_placeholder = window.location.origin + window.location.pathname
     
-    $scope.saveSettings = (settings) ->
+    $scope.saveSettings = (new_settings) ->
       
-      if $scope.settings.menu_address.charAt($scope.settings.menu_address.length-1) is '/'
-        $scope.settings.menu_address = $scope.settings.menu_address[0...$scope.settings.menu_address.length-1]
+      if new_settings.menu_address.charAt(new_settings.menu_address.length-1) is '/'
+        new_settings.menu_address = new_settings.menu_address[0...new_settings.menu_address.length-1]
       
-      Settings.saveSettings(settings)
+      Settings.saveSettings(new_settings)
+        .success (updated_settings) ->
+          $rootScope.PhoneBooks.Settings = angular.copy updated_settings
   
 ])

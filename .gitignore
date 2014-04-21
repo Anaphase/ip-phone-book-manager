@@ -20,7 +20,7 @@ nbproject
 Thumbs.db
 
 # Bower packages folders
-node_modules/
+bower_Components/
 
 # NPM packages folder
 node_modules/

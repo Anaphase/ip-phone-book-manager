@@ -1,7 +1,14 @@
 <?php
 
-$zip_source = 'data/xml/';
-$zip_file = 'data/phonebooks.zip';
+$type = 'cisco';
+
+if (isset($_GET['menu_type']) && $_GET['menu_type'] === 'yealink') {
+  $type = 'yealink';
+}
+
+$zip_source = "data/xml/$type/";
+$zip_name = "$type-phonebooks.zip";
+$zip_file = "data/$zip_name";
 
 $zip = new ZipArchive();
 
@@ -19,5 +26,5 @@ $zip->close();
 
 header('Content-Type: application/octet-stream');
 header('Content-Transfer-Encoding: Binary');
-header('Content-disposition: attachment; filename="phonebooks.zip"');
+header('Content-disposition: attachment; filename="' . $zip_name . '"');
 readfile($zip_file);
