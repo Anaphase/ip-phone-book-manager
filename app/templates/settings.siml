@@ -1,14 +1,13 @@
 div.container
   
   section
-    
     h2 'Settings'
     
     form
       @submit(saveSettings(new_settings))
       
       div.form-group
-        label 'Menu Type'
+        label.control-label 'Menu Type'
         div.radio
           label
             input:radio[value='cisco']
@@ -21,7 +20,7 @@ div.container
             'Yealink'
       
       div.form-group
-        label[for='menu-address']
+        label.control-label[for='menu-address']
           'Menu Address'
         div.input-group
           input:url#menu-address.form-control[placeholder='{{menu_address_placeholder}}'][required]
