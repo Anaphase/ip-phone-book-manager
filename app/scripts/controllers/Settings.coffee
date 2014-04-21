@@ -11,7 +11,7 @@ angular.module('PhoneBook.controllers')
     
     $scope.new_settings = angular.copy $rootScope.PhoneBooks.Settings
     
-    $scope.menu_address_placeholder = window.location.origin + window.location.pathname
+    $scope.menu_address_placeholder = "#{window.location.origin}#{window.location.pathname}phonebooks/data/xml/#{$scope.new_settings.menu_type}/"
     
     $scope.saveSettings = (new_settings) ->
       
