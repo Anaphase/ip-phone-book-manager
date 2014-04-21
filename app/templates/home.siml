@@ -15,11 +15,11 @@ div.container
           div.form-group
             label.col-sm-1.control-label[for='title'] 'Title'
             div.col-sm-11
-              input#title.form-control[placeholder='Directory Menu'] @model(new_cisco_title)
+              input#title.form-control[placeholder='Directory Menu'][required] @model(new_cisco_title)
           div.form-group
             label.col-sm-1.control-label[for='prompt'] 'Prompt'
             div.col-sm-11
-              input#prompt.form-control[placeholder='Please select a directory'] @model(new_cisco_prompt)
+              input#prompt.form-control[placeholder='Please select a directory'][required] @model(new_cisco_prompt)
           div.form-group
             div.col-sm-offset-1.col-sm-11
               button.btn.btn-success[type='submit'] 'Save'
@@ -42,7 +42,7 @@ div.container
                 form
                   @show(is_editing)
                   @submit('saveDirectoryTitle("cisco", menu_item.Name, new_title); is_editing = false')
-                  input[placeholder='Name'] @model(new_title)
+                  input[placeholder='Name'][required] @model(new_title)
               
               td
                 button.btn.btn-success
@@ -87,7 +87,7 @@ div.container
           div.form-group
             label.col-sm-1.control-label[for='title'] 'Title'
             div.col-sm-11
-              input#title.form-control[placeholder='Directory Menu'] @model(new_yealink_title)
+              input#title.form-control[placeholder='Directory Menu'][required] @model(new_yealink_title)
           div.form-group
             div.col-sm-offset-1.col-sm-11
               button.btn.btn-success[type='submit'] 'Save'
@@ -101,7 +101,7 @@ div.container
           tbody
             tr
               @repeat(menu_item in yealink_menu.MenuItem)
-              @init(new_title = menu_item.Prompt)
+              @init(new_prompt = menu_item.Prompt)
               
               td
                 span
@@ -109,12 +109,12 @@ div.container
                   @hide(is_editing)
                 form
                   @show(is_editing)
-                  @submit('saveDirectoryTitle("yealink", menu_item.Prompt, new_title); is_editing = false')
-                  input[placeholder='Prompt'] @model(new_title)
+                  @submit('saveDirectoryTitle("yealink", menu_item.Prompt, new_prompt); is_editing = false')
+                  input[placeholder='Prompt'][required] @model(new_prompt)
               
               td
                 button.btn.btn-success
-                  @click('saveDirectoryTitle("yealink", menu_item.Prompt, new_title); $parent.is_editing = false')
+                  @click('saveDirectoryTitle("yealink", menu_item.Prompt, new_prompt); $parent.is_editing = false')
                   @if(is_editing)
                   'Save'
                 

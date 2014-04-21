@@ -23,11 +23,11 @@ div.container
             div.form-group
               label.col-sm-1.control-label[for='title'] 'Title'
               div.col-sm-11
-                input#title.form-control[placeholder='My Directory'] @model(new_title)
+                input#title.form-control[placeholder='My Directory'][required] @model(new_title)
             div.form-group
               label.col-sm-1.control-label[for='prompt'] 'Prompt'
               div.col-sm-11
-                input#prompt.form-control[placeholder='Please select a contact'] @model(new_prompt)
+                input#prompt.form-control[placeholder='Please select a contact'][required] @model(new_prompt)
             div.form-group
               div.col-sm-offset-1.col-sm-11
                 button.btn.btn-success[type='submit'] 'Save'
@@ -198,7 +198,7 @@ div.container
             div.form-group
               label.col-sm-1.control-label[for='title'] 'Title'
               div.col-sm-11
-                input#title.form-control[placeholder='My Directory'] @model(new_title)
+                input#title.form-control[placeholder='My Directory'][required] @model(new_title)
             div.form-group
               div.col-sm-offset-1.col-sm-11
                 button.btn.btn-success[type='submit'] 'Save'
