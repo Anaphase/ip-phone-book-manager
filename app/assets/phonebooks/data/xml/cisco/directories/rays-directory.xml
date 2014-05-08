@@ -54,7 +54,7 @@ Carrollton, Texas 75006</Address>
   </SoftKeyItem>
   <SoftKeyItem>
     <Name>Menu</Name>
-    <URL>http://example.com/phonebook/menu.xml</URL>
+    <URL>http://example.com/phonebooks/data/xml/cisco/menu.xml</URL>
     <Position>2</Position>
   </SoftKeyItem>
   <SoftKeyItem>

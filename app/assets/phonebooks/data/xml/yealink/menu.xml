@@ -3,18 +3,18 @@
   <Title>Directory List</Title>
   <MenuItem>
     <Prompt>Extension List</Prompt>
-    <URI>http://example.com/phonebook/directories/extension-list.xml</URI>
+    <URI>http://example.com/phonebooks/data/xml/cisco/directories/extension-list.xml</URI>
   </MenuItem>
   <MenuItem>
     <Prompt>Gary Winton's Directory</Prompt>
-    <URI>http://example.com/phonebook/directories/gary-wintons-directory.xml</URI>
+    <URI>http://example.com/phonebooks/data/xml/cisco/directories/gary-wintons-directory.xml</URI>
   </MenuItem>
   <MenuItem>
     <Prompt>Vendors</Prompt>
-    <URI>http://example.com/phonebook/directories/vendors.xml</URI>
+    <URI>http://example.com/phonebooks/data/xml/cisco/directories/vendors.xml</URI>
   </MenuItem>
   <MenuItem>
     <Prompt>Customers</Prompt>
-    <URI>http://example.com/phonebook/directories/customers.xml</URI>
+    <URI>http://example.com/phonebooks/data/xml/cisco/directories/customers.xml</URI>
   </MenuItem>
 </YealinkIPPhoneTextMenu>
